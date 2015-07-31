@@ -10,6 +10,7 @@ app.on('ready', function() {
 
   process.nextTick(function () {
     function intercept(request) {
+      // not called
       console.log(request);
       return new protocol.RequestStringJob({data: "test"});
     }
