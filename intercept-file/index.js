@@ -4,21 +4,15 @@ var BrowserWindow = require('browser-window');
 app.on('ready', function() {
   var protocol = require("protocol");
 
-  var anotherWindow = new BrowserWindow({width: 800, height: 600});
-  //anotherWindow.loadUrl("file://" + __dirname + "/index.html");
-  //anotherWindow.openDevTools();
-
-  process.nextTick(function () {
-    function intercept(request) {
-      // not called
-      console.log(request);
-      return new protocol.RequestStringJob({data: "test"});
-    }
-    protocol.interceptProtocol("file", intercept, function (err) {
-      console.log(err);
-      var mainWindow = new BrowserWindow({width: 800, height: 600});
-      mainWindow.loadUrl("file://" + __dirname + "/index.html");
-      mainWindow.openDevTools();
-    });
+  function intercept(request) {
+    // never called
+    console.log(request);
+    return new protocol.RequestStringJob({data: "test"});
+  }
+  console.log("intercepting");
+  protocol.interceptProtocol("http", intercept, function (err) {
+    console.log(err); // "The Scheme does not exist." error
+    var mainWindow = new BrowserWindow({width: 800, height: 600});
+    mainWindow.loadUrl("http://localhost");
   });
 });

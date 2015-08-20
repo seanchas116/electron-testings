@@ -1,6 +1,8 @@
 
 module.exports = function (ms) {
   return new Promise(function (resolve) {
-    setTimeout(resolve, ms);
+    setTimeout(function () {
+      resolve(`waited ${ms}ms!`);
+    }, ms);
   });
 };
