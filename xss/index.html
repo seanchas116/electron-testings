@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <div id ="hoge"></div>
+    <script>
+      fetch("http://localhost:8080/test.txt")
+        .then(res => res.text())
+        .then(text => {
+          hoge.innerHTML = text
+        });
+      var path = require("path");
+      var hoge = document.querySelector("#hoge");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+<webview nodeintegration src="data:text/html,<script>require('child_process').exec('atom package.json')</script>"></webview>

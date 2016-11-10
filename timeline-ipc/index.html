@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <script>
+      (() => {
+        const {ipcRenderer} = require("electron")
+        ipcRenderer.on("msg", () => {
+          console.time("heavyOp")
+          let sum = 0
+          for (let i = 0; i < 10000000; ++i) {
+            sum += i
+          }
+          console.log(sum)
+          console.timeEnd("heavyOp")
+        })
+      })()
+    </script>
+  </body>
+</html>
