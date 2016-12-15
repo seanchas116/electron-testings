@@ -5,8 +5,9 @@ app.on('ready', function() {
     width: 800,
     height: 600,
     title: "Test Title",
-    titleBarStyle: "hidden",
+    titleBarStyle: "transparent",
   });
   mainWindow.loadURL("file://" + __dirname + "/index.html");
+  mainWindow.setRepresentedFilename(__filename);
   mainWindow.openDevTools();
 });
