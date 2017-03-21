@@ -4,6 +4,18 @@
   </head>
   <body>
     <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const {remote} = require("electron")
+        const {Menu} = remote
+        const w = remote.getCurrentWindow()
+        const menu = Menu.buildFromTemplate([
+          {label: '1'}, {label: '2'}, {label: '3'}
+        ])
+        menu.popup(w, {x: 100, y: 100, async: true})
+        setTimeout(() => {
+          console.log("timed out")
+        }, 100)
+      })
     </script>
   </body>
 </html>
